@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.glitch {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0); /* Inizialmente nascosto */
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -1px 0 red;
+  animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: 1px 0 blue;
+  animation: glitch-anim-2 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+  0% {
+    clip: rect(2em, 9999px, 0, 0);
+  }
+  33% {
+    clip: rect(0, 9999px, 1em, 0);
+  }
+  66% {
+    clip: rect(2em, 9999px, 2em, 0);
+  }
+  100% {
+    clip: rect(0, 9999px, 0, 0);
+  }
+}
+
+@keyframes glitch-anim-2 {
+  0% {
+    clip: rect(0, 0, 2em, 9999px);
+  }
+  33% {
+    clip: rect(1em, 0, 0, 9999px);
+  }
+  66% {
+    clip: rect(2em, 0, 2em, 9999px);
+  }
+  100% {
+    clip: rect(0, 0, 0, 9999px);
+  }
+}
