@@ -1,7 +1,7 @@
 import './index.css';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import AboutMe from './components/AboutMe';
+import { AboutMe } from './components/AboutMe';
 import Skillset from './components/SkillSet';
 
 function App() {

@@ -2,61 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-.glitch {
+/* Google Font pixel style */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Dark mode support (Tailwind v3+ usa class strategy) */
+:root {
+  --bg-light: #ffffff;
+  --bg-dark: #0f172a;
+  --text-light: #0f172a;
+  --text-dark: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+}
+
+.dark body {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* Pixel badge style */
+.pixel-badge {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  background-color: #facc15; /* NES yellow */
+  color: #000;
+  padding: 6px 12px;
+  border: 3px solid #000;
+  border-radius: 4px;
+  box-shadow: 3px 3px 0 #000;
+  image-rendering: pixelated;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.pixel-badge {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.6rem;
+  background: #ffde59;
+  color: #222;
+  border: 2px solid #000;
+  padding: 4px 8px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 0 #000;
+  white-space: nowrap;
+}
+
+.gameboy-frame {
   position: relative;
-  display: inline-block;
-}
-
-.glitch::before,
-.glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  width: 220px;
+  height: 280px;
+  background: linear-gradient(145deg, #d3d3d3, #bbbbbb);
+  border: 8px solid #444;
+  border-radius: 12px;
+  box-shadow: inset -4px -4px 0 #888;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0); /* Inizialmente nascosto */
-}
-
-.glitch::before {
-  left: 2px;
-  text-shadow: -1px 0 red;
-  animation: glitch-anim-1 2s infinite linear alternate-reverse;
-}
-
-.glitch::after {
-  left: -2px;
-  text-shadow: 1px 0 blue;
-  animation: glitch-anim-2 2s infinite linear alternate-reverse;
-}
-
-@keyframes glitch-anim-1 {
-  0% {
-    clip: rect(2em, 9999px, 0, 0);
-  }
-  33% {
-    clip: rect(0, 9999px, 1em, 0);
-  }
-  66% {
-    clip: rect(2em, 9999px, 2em, 0);
-  }
-  100% {
-    clip: rect(0, 9999px, 0, 0);
-  }
-}
-
-@keyframes glitch-anim-2 {
-  0% {
-    clip: rect(0, 0, 2em, 9999px);
-  }
-  33% {
-    clip: rect(1em, 0, 0, 9999px);
-  }
-  66% {
-    clip: rect(2em, 0, 2em, 9999px);
-  }
-  100% {
-    clip: rect(0, 0, 0, 9999px);
-  }
 }
