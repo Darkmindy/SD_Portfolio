@@ -6,12 +6,17 @@ module.exports = {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+    darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
-        'serif': ['Playfair Display', 'serif'], 
-        'mono': ['Inter', 'monospace'], 
-        'cursive': ['Nanum Pen Script', 'cursive', 'Georgia', ...defaultTheme.fontFamily.serif], 
+          serif: ['"Playfair Display"', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+          'cursive': ['Nanum Pen Script', 'cursive', 'Georgia', ...defaultTheme.fontFamily.serif], 
+      },
+      colors: {
+        'accent-secondary': '#a21caf', // Esempio: un viola scuro
       },
     },
   },

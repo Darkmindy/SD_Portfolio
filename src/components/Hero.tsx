@@ -27,13 +27,13 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h1 className="text-4xl md:text-5xl font-serif font-semibold mb-6 leading-tight">
-            Ciao, sono Stefania<br />
+          <h1 className="text-4xl md:text-5xl font-serif font-semibold mb-6 leading-tight text-slate-900 dark:text-white">
+            Ciao, sono Stefania 👋 <br />
             <span className="text-cyan-500">Frontend Developer</span>
           </h1>
 
           <p className="text-base md:text-lg text-slate-600 dark:text-slate-300 mb-8 font-mono">
-            Sviluppatrice e designer multidisciplinare <span className="font-cursive text-gray-400 dark:text-gray-500">(a volte...)</span> con la passione di creare esperienze utente coinvolgenti e divertenti. ✨
+            Sviluppatrice e designer <span className="font-cursive text-gray-400 dark:text-gray-500">(a volte...)</span> costantemente concentrata sull'apprendimento e sull'ampliamento delle mie competenze, elaborando soluzioni sempre migliori e altamente performanti. ✨
           </p>
 
           <a
