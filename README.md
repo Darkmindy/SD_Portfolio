@@ -1,54 +1,71 @@
-# React + TypeScript + Vite
+# 🕹️ Stefania Deliso – Front-End Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Benvenutə nel mio sito portfolio!  
+Un mix tra design moderno e vibes nerd, sviluppato con le migliori tecnologie per offrire un'esperienza fluida e accessibile.
 
-Currently, two official plugins are available:
+![Preview](./public/preview.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Tecnologie Utilizzate
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React** + **Vite** ⚡
+- **TypeScript**
+- **Tailwind CSS**
+- **Framer Motion** per animazioni fluide
+- **React Icons** e **Pixel Art** personalizzati
+- Modalità **Light/Dark**
+- Deploy con **GitHub Pages**
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🎨 Features principali
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Hero section con intro animata e logo personalizzato
+- Sezione **About Me** con immagine e badge dinamici
+- **Skill-set** con badge in stile *level up*
+- Showcase progetti con **modale interattiva**
+- Navbar responsive con effetto *compact on scroll*
+- Footer completo e curato
+- Button "Scroll to top" stile game
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+---
+
+## 🧠 Cosa rappresenta
+
+> Ogni dettaglio, dai font alla micro-interazione, riflette la mia identità come front-end developer con un background in graphic design e UI/UX.
+
+---
+
+## 🛠️ Setup locale
+
+```bash
+# Clona la repo
+git clone https://github.com/Darkmindy/portfolio.git
+
+# Entra nella cartella
+cd portfolio
+
+# Installa le dipendenze
+pnpm install
+
+# Avvia il progetto
+pnpm dev
+
+⚠️ Assicurati di avere pnpm installato. In alternativa, puoi usare npm o yarn.
+
+## 📦 Deployment
+Deploy automatico su GitHub Pages tramite GitHub Actions.
+Il workflow è configurato nel file .github/workflows/ci.yml.
+
+## 📬 Contatti
+Portfolio: stefaniadeliso.dev
+
+GitHub: @Darkmindy
+
+LinkedIn: stefaniad91
+
+Email: stefania.deliso1@gmail.com
+
+## 📄 Licenza
+MIT © Stefania Deliso
