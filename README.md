@@ -54,9 +54,13 @@ pnpm dev
 
 ⚠️ Assicurati di avere pnpm installato. In alternativa, puoi usare npm o yarn.
 
+---
+
 ## 📦 Deployment
 Deploy automatico su GitHub Pages tramite GitHub Actions.
 Il workflow è configurato nel file .github/workflows/ci.yml.
+
+---
 
 ## 📬 Contatti
 Portfolio: stefaniadeliso.dev
@@ -66,6 +70,8 @@ GitHub: @Darkmindy
 LinkedIn: stefaniad91
 
 Email: stefania.deliso1@gmail.com
+
+---
 
 ## 📄 Licenza
 MIT © Stefania Deliso
