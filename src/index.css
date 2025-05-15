@@ -1,11 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Google Font pixel style */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+/* Font custom */
+.font-pixel {
+  font-family: 'Press Start 2P', monospace;
+}
 
-/* Dark mode support (Tailwind v3+ usa class strategy) */
+/* Light mode for badge */
+.badge-pixel {
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0 #000;
+}
+
+/* Dark mode for badge */
+.dark .badge-pixel {
+  background-color: #1f2937;
+  color: #fff;
+  border: 2px solid #fff;
+  box-shadow: 2px 2px 0 #fff;
+}
+
+/* Dark mode body vars */
 :root {
   --bg-light: #ffffff;
   --bg-dark: #0f172a;
@@ -27,22 +47,19 @@ body {
   color: var(--text-dark);
 }
 
-/* Pixel badge style */
-.pixel-badge {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 10px;
-  background-color: #facc15; /* NES yellow */
-  color: #000;
-  padding: 6px 12px;
-  border: 3px solid #000;
-  border-radius: 4px;
-  box-shadow: 3px 3px 0 #000;
-  image-rendering: pixelated;
-  text-align: center;
-  white-space: nowrap;
+/* GameBoy frame simplified */
+.gameboy-frame {
+  position: relative;
+  width: 260px;
+  height: 300px;
+  background: linear-gradient(145deg, #d3d3d3, #bbbbbb);
+  border: 6px solid #333;
+  border-radius: 12px;
+  box-shadow: inset -4px -4px 0 #888;
 }
 
-.pixel-badge {
+
+.badge-pixel {
   font-family: 'Press Start 2P', monospace;
   font-size: 0.6rem;
   background: #ffde59;
@@ -52,15 +69,5 @@ body {
   border-radius: 4px;
   box-shadow: 2px 2px 0 #000;
   white-space: nowrap;
-}
-
-.gameboy-frame {
-  position: relative;
-  width: 220px;
-  height: 280px;
-  background: linear-gradient(145deg, #d3d3d3, #bbbbbb);
-  border: 8px solid #444;
-  border-radius: 12px;
-  box-shadow: inset -4px -4px 0 #888;
-  overflow: hidden;
+  image-rendering: pixelated;
 }
