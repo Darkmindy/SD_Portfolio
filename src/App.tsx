@@ -3,16 +3,18 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import { AboutMe } from './components/AboutMe';
 import Skillset from './components/SkillSet';
-import ThemeToggle from './components/ThemeToggle';
+import FloatingThemeToggle from './components/ui/FloatingThemeToggle';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <>
       <Navbar />
       <Hero />
-      <ThemeToggle />
+      <FloatingThemeToggle />
       <AboutMe />
       <Skillset />
+      <Footer />
 
       {/* Altre sezioni andranno qui */}
     </>

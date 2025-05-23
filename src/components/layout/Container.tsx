@@ -1,15 +1,3 @@
-import React from 'react';
-import classNames from 'clsx';
-
-type Props = {
-  className?: string;
-  children: React.ReactNode;
-};
-
-export const Container = ({ className, children }: Props) => {
-  return (
-    <div className={classNames('mx-auto max-w-7xl px-4 sm:px-6 lg:px-8', className)}>
-      {children}
-    </div>
-  );
-};
+export const Container = ({ children }: { children: React.ReactNode }) => (
+  <div className="max-w-5xl mx-auto px-4 md:px-8">{children}</div>
+);

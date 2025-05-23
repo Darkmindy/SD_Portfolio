@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Container } from '../components/layout/Container';
 import { motion } from 'framer-motion';
 import MeImg from '../assets/me.jpg';
+import { FaArrowUp } from "react-icons/fa6";
 
 const titlesWithEmojis = [
   '👩‍💻 Frontend Dev Artist',
@@ -37,11 +38,13 @@ export const AboutMe = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-serif font-bold mb-4">About Me</h2>
-            <p className="text-lg leading-relaxed mb-6 font-sans">
-              Sono una <strong>front-end developer</strong> con passione per il design pulito, accessibile e curato nei dettagli.
-              Ogni progetto è per me un'opportunità per <span className="font-pixel">level up</span> e migliorare!
-            </p>
+            <h2 className="text-4xl font-nanum-pen font-bold mb-4">About Me</h2>
+              <p className="text-base md:text-lg text-slate-600 dark:text-slate-300 mb-8 font-serif">
+            Front-end developer, web designer <span className="font-nanum-pen text-gray-400 dark:text-gray-500">(e tante altre cose...)</span> con la passione per il design pulito, accessibile e curato nei dettagli.
+            <br /> Sono costantemente concentrata sull'apprendimento e sull'ampliamento delle mie competenze, elaborando soluzioni sempre migliori e altamente performanti.
+           <br /> Ogni progetto è un'opportunità per fare{" "}
+              <span className="font-pixel">level up <FaArrowUp /></span>{" "}! ✨
+          </p>
             <a
               href="/assets/cv.pdf"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-cyan-900 text-white font-mono hover:bg-cyan-600 transition"
