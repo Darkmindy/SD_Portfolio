@@ -5,6 +5,9 @@ import { AboutMe } from './components/AboutMe';
 import Skillset from './components/SkillSet';
 import FloatingThemeToggle from './components/ui/FloatingThemeToggle';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ui/ScrollToTop';
+import { Contact } from 'lucide-react';
+import Projects from './components/Projects';
 
 function App() {
   return (
@@ -13,7 +16,10 @@ function App() {
       <Hero />
       <FloatingThemeToggle />
       <AboutMe />
+      <Projects />
       <Skillset />
+      <ScrollToTop />
+      <Contact />
       <Footer />
 
       {/* Altre sezioni andranno qui */}
