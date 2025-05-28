@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaGithubAlt, FaLinkedinIn, FaBars, FaXmark } from "react-icons/fa6";
+import { FaGithubAlt, FaLinkedinIn, FaBars, FaXmark, FaEnvelope } from "react-icons/fa6"; // Aggiunto FaEnvelope
 import logo from "../assets/icon.png";
 
 const sections = ["home", "about", "skills", "projects", "contact"];
@@ -10,20 +10,28 @@ const Navbar = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [activeSection, setActiveSection] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false); // Nuovo stato per la trasparenza
 
   useEffect(() => {
     const handleScroll = () => {
       const currentY = window.scrollY;
+
+      // Gestione della visibilità della navbar (nascondi/mostra allo scroll)
       setVisible(currentY < lastScrollY || currentY < 100);
       setLastScrollY(currentY);
 
+      // Gestione della trasparenza/solidità della navbar
+      setIsScrolled(currentY > 50); // Diventa solida dopo 50px di scroll
+
+      // Aggiorna la sezione attiva in base allo scroll
       for (const id of sections) {
         const section = document.getElementById(id);
         if (section) {
           const top = section.offsetTop;
-          const bottom = top + section.offsetHeight;
-          if (currentY + 200 >= top && currentY < bottom) {
+          const height = section.offsetHeight;
+          if (currentY + 150 >= top && currentY < top + height) {
             setActiveSection(id);
+            break;
           }
         }
       }
@@ -34,6 +42,7 @@ const Navbar = () => {
   }, [lastScrollY]);
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <>
@@ -41,14 +50,19 @@ const Navbar = () => {
         initial={{ y: 0 }}
         animate={{ y: visible ? 0 : "-100%" }}
         transition={{ duration: 0.3 }}
-        className="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-slate-950/90 backdrop-blur-md shadow-md"
+        // Modificato per la trasparenza e il cambio colore allo scroll
+        className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
+          isScrolled
+            ? "bg-white/80 dark:bg-slate-950/90 shadow-md backdrop-blur-md" // Sfondo solido quando si scorre
+            : "bg-transparent" // Sfondo trasparente all'inizio
+        }`}
       >
         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-          <a href="#home">
+          <a href="#home" onClick={closeMenu}>
             <img src={logo} alt="Logo" className="h-10 md:h-10" />
           </a>
 
-          {/* Desktop menu */}
+          {/* Menu per Desktop */}
           <ul className="hidden md:flex gap-6 font-mono text-sm">
             {sections.map((section) => (
               <li key={section}>
@@ -57,7 +71,7 @@ const Navbar = () => {
                   className={`relative transition-colors duration-300 ${
                     activeSection === section
                       ? "text-cyan-600 dark:text-cyan-400"
-                      : "text-slate-800 dark:text-white"
+                      : "text-slate-800 dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400"
                   }`}
                 >
                   {section.toUpperCase()}
@@ -69,43 +83,48 @@ const Navbar = () => {
             ))}
           </ul>
 
-          {/* Mobile button */}
+          {/* Bottone Hamburger per Mobile */}
           <div className="md:hidden text-slate-800 dark:text-white">
-            <button onClick={toggleMenu}>
+            <button onClick={toggleMenu} aria-label={menuOpen ? "Chiudi menu" : "Apri menu"}>
               {menuOpen ? <FaXmark size={24} /> : <FaBars size={24} />}
             </button>
           </div>
         </div>
       </motion.nav>
 
-      {/* Mobile menu overlay */}
+      {/* Overlay del Menu Mobile */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-           initial={{ opacity: 0 }}
-           animate={{ opacity: 1 }}
-           exit={{ opacity: 0 }}
-           transition={{ duration: 0.3 }}
-           className="fixed inset-0 bg-slate-900/90 text-white flex flex-col justify-center items-center z-40 glitch">
-            <ul className="space-y-6 text-xl font-mono">
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="fixed inset-0 bg-slate-950/95 text-white flex flex-col justify-center items-center z-40"
+          >
+            <ul className="space-y-8 text-3xl font-mono mb-12">
               {sections.map((section) => (
                 <li key={section}>
                   <a
                     href={`#${section}`}
-                    onClick={() => setMenuOpen(false)}
-                    className="hover:text-cyan-400 transition-all"
+                    onClick={closeMenu}
+                    className="hover:text-cyan-400 transition-colors duration-300"
                   >
                     {section.toUpperCase()}
                   </a>
                 </li>
               ))}
             </ul>
-            <div className="flex space-x-4 mt-12">
-              <a href="https://github.com/Darkmindy" target="_blank" rel="noreferrer">
-                <FaGithubAlt size={28} className="hover:text-cyan-400 transition" />
+
+            <div className="flex space-x-6 mt-8">
+              <a href="https://github.com/Darkmindy" target="_blank" rel="noreferrer" onClick={closeMenu}>
+                <FaGithubAlt size={32} className="hover:text-cyan-400 transition-colors" />
               </a>
-              <a href="https://www.linkedin.com/in/stefaniad91/" target="_blank" rel="noreferrer">
-                <FaLinkedinIn size={28} className="hover:text-cyan-400 transition" />
+              <a href="https://www.linkedin.com/in/stefaniad91/" target="_blank" rel="noreferrer" onClick={closeMenu}>
+                <FaLinkedinIn size={32} className="hover:text-cyan-400 transition-colors" />
+              </a>
+              <a href="mailto:your.email@example.com" target="_blank" rel="noreferrer" onClick={closeMenu}>
+                <FaEnvelope size={32} className="hover:text-cyan-400 transition-colors" />
               </a>
             </div>
           </motion.div>

@@ -3,7 +3,7 @@
     import TicTacToe from '@/assets/Projects/Tic-Tac-Toe.png';
     import FirstPortfolio from '@/assets/Projects/MyPortfolio.png';
     import MyBusinessCard from '@/assets/Projects/MyBusinessCard.png';
-    import ComingSoon from '@/assets/Projects/ComingSoon.png';
+    import SoulFarm from '@/assets/Projects/SoulFarm.png';
 
     export interface Project {
         id: number;
@@ -23,17 +23,17 @@
        
         {
             id: 1,
-            title: "Coming Soon",
-            imageUrl: ComingSoon,
-            description: "Progetto in sviluppo, presto disponibile!",
-            tech: ["React", "Vite"],
-            github: "",
-            demo: "",
+            title: "SoulFarm Replica - Website",
+            imageUrl: SoulFarm,
+            description: "Il test Frontend per eccellenza, ho preso un sito già esistente in wordpress ",
+            tech: ["React", "Vite", "TypeScript", "TailwindCSS"],
+            github: "https://github.com/Darkmindy/soulfarm-react",
+            demo: "https://darkmindy.github.io/soulfarm-react/",
         },
         {
             id: 2,
-            title: 'Personal Portfolio 👩🏻‍💻',
-            description: 'Il primo prototipo di sito portfolio',
+            title: 'First Portfolio 👩🏻‍💻',
+            description: 'Il primo prototipo di sito portfolio, progetto "scolastico"',
             text: '',
             imageUrl: FirstPortfolio,
             stack: ['React', 'Material-UI', 'TypeScript'],
@@ -43,8 +43,8 @@
         {
             id: 3,
             title: 'DuckList',
-            description: 'A simple To Do List with ducks 🦆',
-            text: 'This project focuses on a React.js and hooks exercise. The app also allows users to add, edit, and delete tasks.',
+            description: 'Una to-do list con le paperelle 🦆',
+            text: 'Questo progetto è stato realizzato utilizzando React, Bootstrap e TypeScript. L\'applicazione offre una lista di elementi da fare, con funzionalità di aggiunta, rimozione e completamento.',
             imageUrl: DuckList,
             stack: ['React', 'Bootstrap', 'TypeScript'],
             liveUrl: 'https://github.com/Darkmindy/DuckList',
