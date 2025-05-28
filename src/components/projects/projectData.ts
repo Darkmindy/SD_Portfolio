@@ -24,11 +24,12 @@
         {
             id: 1,
             title: "SoulFarm Replica - Website",
-            imageUrl: SoulFarm,
             description: "Il test Frontend per eccellenza, ho preso un sito già esistente in wordpress ",
-            tech: ["React", "Vite", "TypeScript", "TailwindCSS"],
-            github: "https://github.com/Darkmindy/soulfarm-react",
-            demo: "https://darkmindy.github.io/soulfarm-react/",
+            text: '',
+            imageUrl: SoulFarm,
+            stack: ['React', 'Vite', 'TypeScript', 'TailwindCSS'],
+            liveUrl: 'https://darkmindy.github.io/soulfarm-react/',
+            repoUrl: 'https://github.com/Darkmindy/soulfarm-react',
         },
         {
             id: 2,
@@ -37,7 +38,7 @@
             text: '',
             imageUrl: FirstPortfolio,
             stack: ['React', 'Material-UI', 'TypeScript'],
-            liveUrl: 'https://livedemo1.com',
+            liveUrl: 'https://stefaniadeliso.netlify.app',
             repoUrl: 'https://github.com/Darkmindy/Stefania_D-portfolio-site.git',
         },
         {
