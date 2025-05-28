@@ -1,6 +1,6 @@
     import DuckList from '@/assets/Projects/DuckList.png';
     import ProjectWork from '@/assets/Projects/Project-Work.png';
-    import TicTacToe from '@/assets/Projects/Tic-Tac-Toe.png';
+    import TicTacToe from '@/assets/Projects/Tic-tac-toe.png';
     import FirstPortfolio from '@/assets/Projects/MyPortfolio.png';
     import MyBusinessCard from '@/assets/Projects/MyBusinessCard.png';
     import SoulFarm from '@/assets/Projects/SoulFarm.png';
