@@ -8,6 +8,10 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ui/ScrollToTop';
 import { Contact } from 'lucide-react';
 import Projects from './components/Projects';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-cards'; 
 
 function App() {
   return (
@@ -15,8 +19,8 @@ function App() {
       <Navbar />
       <Hero />
       <FloatingThemeToggle />
-      <AboutMe />
       <Projects />
+      <AboutMe />
       <Skillset />
       <ScrollToTop />
       <Contact />

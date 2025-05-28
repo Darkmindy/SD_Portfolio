@@ -4,28 +4,26 @@ import profile from "@/assets/profile.png";
 import { FaArrowDown, FaGithubAlt, FaLinkedinIn, FaEnvelope } from 'react-icons/fa6';
 
 const rotatingTexts = [
-  "Frontend Developer",
+  "Frontend Dev Artist",
   "React + Vite Lover",
-  "UI/UX Enthusiast",
-  "Creative Coder",
+  "WordPress Modder",
+  "UI Enthusiast",
   "Problem Solver",
 ];
 
 export default function HeroSection() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isLoaded, setIsLoaded] = useState(false);
+  // isLoaded rimosso
   const [currentTextIndex, setCurrentTextIndex] = useState(0); // Stato per il testo dinamico
 
   useEffect(() => {
-    setIsLoaded(true);
-
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  }, []); // Dipendenze vuote per eseguire una volta al mount
 
   // Effetto per cambiare il testo ogni 3 secondi
   useEffect(() => {
@@ -34,7 +32,7 @@ export default function HeroSection() {
     }, 3000); // Cambia testo ogni 3 secondi
 
     return () => clearInterval(interval); // Pulisci l'intervallo alla dismount del componente
-  }, []);
+  }, []); // Dipendenze vuote per l'intervallo
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -75,8 +73,7 @@ export default function HeroSection() {
       </div>
 
       {/* Contenuto principale con Framer Motion */}
-      <div className={`relative z-10 max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-10 items-center transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-
+      <div className="relative z-10 max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-10 items-center">
         {/* Immagine profilo */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -102,7 +99,7 @@ export default function HeroSection() {
             Ciao, sono Stefania<br />
             {/* Testo dinamico */}
             <span className="text-cyan-500 inline-block opacity-80 h-12 overflow-hidden relative text-center md:text-left">
-              <AnimatePresence mode='wait'> 
+              <AnimatePresence mode='wait'>
                 <motion.span
                   key={currentTextIndex}
                   initial={{ opacity: 0 }}
@@ -118,7 +115,18 @@ export default function HeroSection() {
           </h1>
 
           <p className="text-base md:text-lg text-slate-600 dark:text-slate-300 mb-8 font-sans">
-            Sviluppatrice e designer <span className="font-nanum-pen text-gray-400 dark:text-gray-500">(e tante altre cose...)</span> costantemente concentrata sull'apprendimento e sull'ampliamento delle mie competenze, elaborando soluzioni sempre migliori e altamente performanti. ✨
+            Costruisco applicazioni web{" "}
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-semibold">
+              robuste
+            </span>{" "}
+            che combinano{" "}
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-semibold">
+              design intuitivo
+            </span>{" "}
+            e{" "}
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-semibold">
+              tecnologia all'avanguardia
+            </span>.
           </p>
 
           {/* Bottoni CTA */}
