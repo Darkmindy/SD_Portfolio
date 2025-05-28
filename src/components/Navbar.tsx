@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaGithubAlt, FaLinkedinIn, FaBars, FaXmark, FaEnvelope } from "react-icons/fa6"; // Aggiunto FaEnvelope
-import logo from "../assets/icon.png";
+import { FaGithubAlt, FaLinkedinIn, FaBars, FaXmark, FaEnvelope } from "react-icons/fa6";
+import logoColor from "../assets/icon_color.png";
+import logoWhite from "../assets/icon.png";
 
 const sections = ["home", "about", "skills", "projects", "contact"];
 
@@ -10,7 +11,7 @@ const Navbar = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [activeSection, setActiveSection] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false); // Nuovo stato per la trasparenza
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,7 +22,7 @@ const Navbar = () => {
       setLastScrollY(currentY);
 
       // Gestione della trasparenza/solidità della navbar
-      setIsScrolled(currentY > 50); // Diventa solida dopo 50px di scroll
+      setIsScrolled(currentY > 50);
 
       // Aggiorna la sezione attiva in base allo scroll
       for (const id of sections) {
@@ -59,7 +60,18 @@ const Navbar = () => {
       >
         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
           <a href="#home" onClick={closeMenu}>
-            <img src={logo} alt="Logo" className="h-10 md:h-10" />
+            {/* Logo colorato (visibile in light mode) */}
+            <img
+              src={logoColor}
+              alt="Logo"
+              className="h-10 md:h-10 dark:hidden" // Nascondi in dark mode
+            />
+            {/* Logo bianco (visibile in dark mode) */}
+            <img
+              src={logoWhite}
+              alt="Logo White"
+              className="h-10 md:h-10 hidden dark:block" // Mostra solo in dark mode
+            />
           </a>
 
           {/* Menu per Desktop */}
