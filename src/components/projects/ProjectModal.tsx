@@ -1,9 +1,6 @@
-import { Project } from "../data/projectsData";
+import { Project } from '@/data/projectsData';
 import { motion } from "framer-motion";
-import { FaExternalLinkAlt, FaGithub, FaTimes } from 'react-icons/fa'; // Importa FaTimes per il bottone di chiusura
-// Se hai un componente Button, assicurati di importarlo qui:
-// import { Button } from '../ui/Button'; 
-
+import { FaExternalLinkAlt, FaGithub, FaTimes } from 'react-icons/fa';
 
 interface Props {
   project: Project;
@@ -17,7 +14,7 @@ export function ProjectModal({ project, onClose }: Props) {
       onClick={onClose}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }} // Aggiunto per AnimatePresence nel caso tu volessi usarla qui
+      exit={{ opacity: 0 }}
     >
       <motion.div
         onClick={(e) => e.stopPropagation()}
@@ -39,17 +36,17 @@ export function ProjectModal({ project, onClose }: Props) {
         <h2 className="text-3xl md:text-4xl font-bold font-display gradient-text mb-4">
           {project.title}
         </h2>
-        
+
         <img
           src={project.imageUrl}
           alt={project.title}
           className="w-full h-auto rounded-lg mb-6 shadow-md"
         />
-        
+
         <p className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed mb-4">
           {project.description}
         </p>
-        
+
         {project.longDescription && (
           <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-6">
             {project.longDescription}
@@ -58,7 +55,7 @@ export function ProjectModal({ project, onClose }: Props) {
 
         <h3 className="text-xl font-semibold text-slate-800 dark:text-white mb-3">Tecnologie Utilizzate:</h3>
         <div className="flex flex-wrap gap-3 mb-6">
-          {project.technologies.map((tech, idx) => (
+          {project.technologies.map((tech: string, idx: number) => (
             <span
               key={idx}
               className="bg-cyan-100 dark:bg-cyan-900 text-cyan-800 dark:text-cyan-200 text-sm px-3 py-1 rounded-full font-medium"

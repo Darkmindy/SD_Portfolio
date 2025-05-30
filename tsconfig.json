@@ -8,18 +8,24 @@
 
     /* Bundler mode */
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true, 
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
 
-    /* Type Checking */
+    /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    
+    "baseUrl": ".", 
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
-  "include": ["src"], 
-  "references": [{ "path": "./tsconfig.node.json" }] 
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

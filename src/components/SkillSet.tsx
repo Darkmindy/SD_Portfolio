@@ -1,9 +1,9 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import SectionIntro from './layout/SectionIntro'; // Assicurati che il percorso sia corretto
-import { allHardSkills, softSkillsPhrases, Skill } from '../data/skillsData'; // Assicurati che il percorso sia corretto
+import SectionIntro from './layout/SectionIntro'; 
+import { allHardSkills, softSkillsPhrases, Skill } from '@/data/skillsData';
 
 const SkillSet = () => {
-  // Varianti per le icone delle Hard Skills (rimangono invariate rispetto alla precedente versione)
+  
   const hardSkillIconVariants = {
     hidden: { y: 50, opacity: 0, scale: 0.8 },
     visible: (i: number) => ({
@@ -29,7 +29,7 @@ const SkillSet = () => {
     },
   };
 
-  // NUOVE Varianti per le card delle Soft Skills
+  
   const softSkillCardVariants = {
     hidden: { y: 50, opacity: 0, scale: 0.9 }, // Partono leggermente da sotto e più piccole
     visible: (i: number) => ({
@@ -57,7 +57,7 @@ const SkillSet = () => {
     },
   };
 
-  // Varianti per l'effetto "barattolo che si muove" (rimangono invariate)
+  // Varianti per l'effetto "barattolo che si muove" 
   const jarShakeVariants = {
     initial: {},
     animate: {},
@@ -76,7 +76,7 @@ const SkillSet = () => {
     },
   };
 
-  // Funzione per gli stili dello status badge (rimane invariata)
+  // Funzione per gli stili dello status badge 
   const getStatusBadgeStyles = (status?: Skill['status']) => {
     switch (status) {
       case 'Ottimo':
@@ -168,7 +168,7 @@ const SkillSet = () => {
             <h3 className="text-3xl sm:text-4xl font-bold mb-8 text-purple-600 dark:text-purple-400 font-display">
               Soft Skills
             </h3>
-            {/* Contenitore delle card delle soft skills - NUOVA GRIGLIA */}
+            {/* Contenitore delle card delle soft skills */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 md:gap-x-8 md:gap-y-8 w-full max-w-lg">
               <AnimatePresence>
                 {softSkillsPhrases.map((skill, index) => (
