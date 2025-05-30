@@ -1,36 +1,33 @@
 import './index.css';
-import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import { AboutMe } from './components/AboutMe';
 import Skillset from './components/SkillSet';
 import FloatingThemeToggle from './components/ui/FloatingThemeToggle';
-import Footer from './components/Footer';
-import ScrollToTop from './components/ui/ScrollToTop';
 import { References } from './components/References';
-import { Blog } from './components/Blog'; 
-import Contact from './components/Contact'; 
+import { Blog } from './components/Blog';
+import Contact from './components/Contact';
 import Projects from './components/Projects';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/effect-cards'; 
+import 'swiper/css/effect-cards';
+
+import { Layout } from '@/components/layout/Layout';
 
 
 function App() {
   return (
-    <>
-      <Navbar />
+    <Layout>
+      {/* Navbar, FloatingThemeToggle, Footer, ScrollToTop sono ora dentro Layout */}
       <Hero />
-      <FloatingThemeToggle /> 
+      <FloatingThemeToggle />
       <Projects />
       <AboutMe />
       <Skillset />
       <References />
       <Blog />
       <Contact />
-      <Footer />
-      <ScrollToTop />
-    </>
+    </Layout>
   );
 }
 

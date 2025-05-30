@@ -20,14 +20,13 @@ export default function HeroSection() {
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Variazioni Framer Motion per gli elementi figli (testo, bottoni, social)
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1, // Ritarda progressivo ai figli
-        delayChildren: 0.5 // Anima i figli dopo 
+        staggerChildren: 0.1,
+        delayChildren: 0.5
       }
     }
   };
@@ -45,10 +44,13 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 text-slate-900 dark:text-white overflow-hidden bg-white dark:bg-slate-950"
+      className="relative min-h-screen flex items-center justify-center
+                 text-slate-900 dark:text-white overflow-hidden
+                 bg-white dark:bg-slate-950 /* Lasciamo questi sfondi di base */
+                 "
     >
       {/* Sfondo animato con sfere fluttuanti e sfera luminosa interattiva */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100 dark:from-slate-950 dark:via-blue-950 dark:to-indigo-950"> {/* MODIFICATO: Sfondo leggermente più scuro per light mode */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100 dark:from-slate-950 dark:via-blue-950 dark:to-indigo-950">
         <div className="absolute inset-0">
           {[...Array(20)].map((_, i) => (
             <div
@@ -78,7 +80,9 @@ export default function HeroSection() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 max-w-6xl mx-auto w-full flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20"
+        className="relative z-10 w-full /* <-- Rimosso max-w-6xl e mx-auto */
+                   flex flex-col md:flex-row items-center justify-center
+                   gap-10 md:gap-20 px-4 sm:px-6 lg:px-8 py-12"
       >
         {/* Immagine profilo */}
         <motion.div

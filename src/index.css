@@ -5,6 +5,10 @@
 @tailwind components;
 @tailwind utilities;
 
+-body {
+ overflow: hidden;
+}
+
 .gradient-text {
   @apply bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent;
 }

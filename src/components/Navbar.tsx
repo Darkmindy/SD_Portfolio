@@ -30,7 +30,7 @@ const Navbar = () => {
         if (section) {
           const top = section.offsetTop;
           const height = section.offsetHeight;
-          if (currentY + 150 >= top && currentY < top + height) {
+          if (currentY + 100 >= top && currentY < top + height) {
             setActiveSection(id);
             break;
           }
@@ -51,30 +51,26 @@ const Navbar = () => {
         initial={{ y: 0 }}
         animate={{ y: visible ? 0 : "-100%" }}
         transition={{ duration: 0.3 }}
-        // Modificato per la trasparenza e il cambio colore allo scroll
         className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
           isScrolled
-            ? "bg-white/80 dark:bg-slate-950/90 shadow-md backdrop-blur-md" // Sfondo solido quando si scorre
-            : "bg-transparent" // Sfondo trasparente all'inizio
+            ? "bg-white/80 dark:bg-slate-950/90 shadow-md backdrop-blur-md"
+            : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <a href="#home" onClick={closeMenu}>
-            {/* Logo colorato (visibile in light mode) */}
             <img
               src={logoColor}
               alt="Logo"
-              className="h-10 md:h-10 dark:hidden" // Nascondi in dark mode
+              className="h-10 dark:hidden"
             />
-            {/* Logo bianco (visibile in dark mode) */}
             <img
               src={logoWhite}
               alt="Logo White"
-              className="h-10 md:h-10 hidden dark:block" // Mostra solo in dark mode
+              className="h-10 hidden dark:block"
             />
           </a>
 
-          {/* Menu per Desktop */}
           <ul className="hidden md:flex gap-6 font-mono text-sm">
             {sections.map((section) => (
               <li key={section}>
@@ -95,7 +91,6 @@ const Navbar = () => {
             ))}
           </ul>
 
-          {/* Bottone Hamburger per Mobile */}
           <div className="md:hidden text-slate-800 dark:text-white">
             <button onClick={toggleMenu} aria-label={menuOpen ? "Chiudi menu" : "Apri menu"}>
               {menuOpen ? <FaXmark size={24} /> : <FaBars size={24} />}
@@ -104,7 +99,6 @@ const Navbar = () => {
         </div>
       </motion.nav>
 
-      {/* Overlay del Menu Mobile */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
