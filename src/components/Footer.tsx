@@ -1,6 +1,6 @@
 import { FaGithubAlt, FaLinkedinIn, FaEnvelope, FaPhone } from 'react-icons/fa6';
 import { motion } from 'framer-motion';
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.png"; // Assicurati che il percorso sia corretto
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -8,7 +8,8 @@ export default function Footer() {
   const handleNavClick = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const yOffset = -80;
+      // Offset per tenere conto della Navbar fissa (se presente)
+      const yOffset = -80; 
       const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
@@ -20,48 +21,48 @@ export default function Footer() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="bg-slate-900 text-white py-12 border-t-2 border-cyan-500 px-6"
+      className="bg-slate-950 text-white py-16 px-4 sm:px-6 lg:px-8 border-t border-slate-800 dark:border-blue-800/50" // Colore di sfondo più scuro, padding uniforme, bordo più sottile e moderno
     >
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 pb-10 border-b border-slate-800 dark:border-blue-800/50"> {/* Aumento il gap e aggiungo un bordo inferiore */}
         {/* Logo + Bio */}
         <div className="sm:col-span-2">
-          <a href="#" className="inline-block mb-4">
+          <a href="#" className="inline-block mb-6"> {/* Aumento il margine inferiore per il logo */}
             <img
               src={logo}
               alt="Logo Stefania Deliso"
-              className="w-28 h-auto object-contain transition-transform duration-300 hover:scale-105"
+              className="w-32 h-auto object-contain transition-transform duration-300 hover:scale-105" // Logo leggermente più grande
             />
           </a>
-          <p className="text-sm text-slate-400 font-mono max-w-md">
+          <p className="text-base text-slate-400 font-sans leading-relaxed max-w-md"> {/* Font sans per la bio, testo più grande */}
             Frontend developer & UI/UX designer con uno stile tra minimalismo moderno e vibes nerd. 👾
           </p>
-          <div className="flex space-x-4 mt-4">
-            <a
-              href="https://github.com/Darkmindy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-cyan-400 transition"
-              aria-label="GitHub"
-            >
-              <FaGithubAlt className="h-6 w-6" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/stefaniad91/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-cyan-400 transition"
-              aria-label="LinkedIn"
-            >
-              <FaLinkedinIn className="h-6 w-6" />
-            </a>
+          <div className="flex space-x-5 mt-6"> {/* Aumento lo spazio tra le icone e il margine superiore */}
+            {/* Social Links con stile uniforme a Hero Section */}
+            {[
+              { icon: FaGithubAlt, href: "https://github.com/Darkmindy", label: "GitHub" },
+              { icon: FaLinkedinIn, href: "https://www.linkedin.com/in/stefaniad91/", label: "LinkedIn" }
+            ].map(({ icon: Icon, href, label }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative p-3 rounded-full bg-white/10 backdrop-blur-sm border border-slate-700 hover:border-blue-500 transition-all duration-300 hover:scale-110 hover:shadow-lg flex items-center justify-center"
+                aria-label={label}
+              >
+                <Icon className="w-6 h-6 text-slate-300 group-hover:text-blue-400 transition-colors duration-300" />
+                <span className="sr-only">{label}</span>
+                <div className="absolute inset-0 rounded-full bg-blue-500/20 scale-0 group-hover:scale-100 transition-transform duration-300" />
+              </a>
+            ))}
           </div>
         </div>
 
         {/* Navigazione */}
         <div>
-          <h3 className="text-lg font-semibold mb-4 text-cyan-400 font-mono">Link Utili</h3>
-          <ul className="space-y-2 text-sm font-mono text-slate-400">
-            {["home", "projects", "skills", "about", "contact"].map((id) => (
+          <h3 className="text-xl font-semibold mb-5 gradient-text font-display">Link Utili</h3> {/* Font display e gradient-text */}
+          <ul className="space-y-3 text-base font-sans text-slate-300"> {/* Font sans, testo più grande */}
+            {["home", "projects", "skills", "about", "references", "blog", "contact"].map((id) => ( // Aggiunti 'references' e 'blog'
               <li key={id}>
                 <a
                   href={`#${id}`}
@@ -69,7 +70,7 @@ export default function Footer() {
                     e.preventDefault();
                     handleNavClick(id);
                   }}
-                  className="hover:text-cyan-400 transition"
+                  className="hover:text-blue-400 transition-colors duration-200 block" // Colore hover più coerente e block per maggiore area cliccabile
                 >
                   {id.charAt(0).toUpperCase() + id.slice(1)}
                 </a>
@@ -80,24 +81,28 @@ export default function Footer() {
 
         {/* Contatti */}
         <div>
-          <h3 className="text-lg font-semibold mb-4 text-cyan-400 font-mono">Contatti</h3>
-          <ul className="space-y-3 text-sm text-slate-400 font-mono">
+          <h3 className="text-xl font-semibold mb-5 gradient-text font-display">Contattami</h3> {/* Font display e gradient-text */}
+          <ul className="space-y-3 text-base text-slate-300 font-sans"> {/* Font sans, testo più grande */}
             <li className="flex items-center">
-              <FaEnvelope className="w-5 h-5 mr-2 text-cyan-400" />
-              stefania.deliso1@gmail.com
+              <FaEnvelope className="w-5 h-5 mr-3 text-blue-400" /> {/* Icona leggermente più grande, margine più grande */}
+              <a href="mailto:stefania.deliso1@gmail.com" className="hover:text-blue-400 transition-colors duration-200">
+                stefania.deliso1@gmail.com
+              </a>
             </li>
             <li className="flex items-center">
-              <FaPhone className="w-5 h-5 mr-2 text-cyan-400" />
-              +39 324 7860089
+              <FaPhone className="w-5 h-5 mr-3 text-blue-400" /> {/* Icona leggermente più grande, margine più grande */}
+              <a href="tel:+393247860089" className="hover:text-blue-400 transition-colors duration-200">
+                +39 324 7860089
+              </a>
             </li>
           </ul>
         </div>
       </div>
 
-      {/* Bottom */}
-      <div className="border-t border-slate-800 mt-10 pt-6 text-center text-sm font-mono text-slate-500">
+      {/* Bottom - Copyright */}
+      <div className="mt-10 pt-6 text-center text-sm font-sans text-slate-500"> {/* Margine superiore uniforme, font sans */}
         <p>© {currentYear} Stefania Deliso. All rights reserved.</p>
-        <p className="mt-1">Built with React, Vite & ❤️</p>
+        <p className="mt-2 text-slate-600">Built with React, Vite & <span className="text-red-500">❤️</span></p> {/* Leggero margine superiore e colore diverso per l'ultima riga */}
       </div>
     </motion.footer>
   );

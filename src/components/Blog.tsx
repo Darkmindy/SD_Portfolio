@@ -1,4 +1,5 @@
 import { Container } from '../components/layout/Container';
+import SectionIntro from '../components/layout/SectionIntro';
 
 const blogPosts = [
   {
@@ -16,9 +17,18 @@ const blogPosts = [
 ];
 
 export const Blog = () => (
-  <section id="blog" className="py-20 bg-slate-50 dark:bg-slate-900 text-primary dark:text-white">
+  <section id="blog" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900 text-primary dark:text-white"> {/* Allineo padding a sezioni precedenti */}
     <Container>
-      <h2 className="text-3xl font-bold text-center font-serif mb-12">📝 Blog & Risorse</h2>
+      {/* Utilizzo SectionIntro per il titolo e la descrizione */}
+      <SectionIntro
+        title={
+          <>
+            📝 Blog & <span className="gradient-text">Risorse</span>
+          </>
+        }
+        description="Approfondimenti e riflessioni sulle mie esperienze nel mondo del design e dello sviluppo web."
+      />
+      {/* Il resto del contenuto rimane uguale */}
       <div className="grid md:grid-cols-2 gap-8">
         {blogPosts.map((post, i) => (
           <a
@@ -26,9 +36,9 @@ export const Blog = () => (
             href={post.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="block p-6 bg-white dark:bg-slate-800 rounded-lg shadow-md hover:shadow-lg transition"
+            className="block p-6 bg-white dark:bg-slate-800 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300" // Aggiungo transizione per l'ombra
           >
-            <h3 className="text-xl font-semibold">{post.title}</h3>
+            <h3 className="text-xl font-semibold text-slate-800 dark:text-white">{post.title}</h3> {/* Aggiungo colore al titolo */}
             <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">{post.date}</p>
             <p className="text-sm text-gray-700 dark:text-gray-300">{post.description}</p>
           </a>

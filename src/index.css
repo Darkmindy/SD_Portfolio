@@ -5,99 +5,39 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Font custom */
-.font-pixel {
-  font-family: 'Press Start 2P', monospace;
-}
-
-/* Light mode for badge */
-.badge-pixel {
-  background-color: #fff;
-  color: #000;
-  border: 2px solid #000;
-  box-shadow: 2px 2px 0 #000;
-}
-
-/* Dark mode for badge */
-.dark .badge-pixel {
-  background-color: #1f2937;
-  color: #fff;
-  border: 2px solid #fff;
-  box-shadow: 2px 2px 0 #fff;
-}
-
-/* Dark mode body vars */
-:root {
-  --bg-light: #ffffff;
-  --bg-dark: #0f172a;
-  --text-light: #0f172a;
-  --text-dark: #ffffff;
+.gradient-text {
+  @apply bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-body {
-  background-color: var(--bg-light);
-  color: var(--text-light);
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+/* Stile per la barra di scorrimento */
+::-webkit-scrollbar {
+  width: 10px; /* Larghezza della barra di scorrimento */
 }
 
-.dark body {
-  background-color: var(--bg-dark);
-  color: var(--text-dark);
+/* Stile per il 'binario' della barra di scorrimento (lo sfondo) */
+::-webkit-scrollbar-track {
+  background: #0f172a; /* Sfondo scuro, lo stesso del dark mode */
+  border-radius: 10px;
 }
 
-/* GameBoy frame simplified */
-.gameboy-frame {
-  position: relative;
-  width: 260px;
-  height: 300px;
-  background: linear-gradient(145deg, #d3d3d3, #bbbbbb);
-  border: 6px solid #333;
-  border-radius: 12px;
-  box-shadow: inset -4px -4px 0 #888;
+/* Stile per il 'pollice' della barra di scorrimento (la parte che si muove) */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #a78bfa, #f472b6, #22d3ee); /* Il tuo gradiente principale */
+  border-radius: 10px;
 }
 
-
-.badge-pixel {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.6rem;
-  background: #ffde59;
-  color: #222;
-  border: 2px solid #000;
-  padding: 4px 8px;
-  border-radius: 4px;
-  box-shadow: 2px 2px 0 #000;
-  white-space: nowrap;
-  image-rendering: pixelated;
+/* Stile del pollice al passaggio del mouse */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #c4b5fd, #fb7185, #67e8f9); /* Un gradiente leggermente più chiaro al passaggio del mouse */
 }
-
-@keyframes slide-in {
-  0% {
-    width: 0;
-    opacity: 0;
-  }
-  100% {
-    width: 100%;
-    opacity: 1;
-  }
-}
-
-.animate-slide-in {
-  animation: slide-in 0.3s ease-in-out forwards;
-}
-
-@keyframes glitch {
-  0% { transform: translate(0); }
-  20% { transform: translate(-2px, 2px); }
-  40% { transform: translate(-2px, -2px); }
-  60% { transform: translate(2px, 2px); }
-  80% { transform: translate(2px, -2px); }
-  100% { transform: translate(0); }
-}
-
-.glitch {
-  animation: glitch 300ms ease-in-out 1;
-}
-
