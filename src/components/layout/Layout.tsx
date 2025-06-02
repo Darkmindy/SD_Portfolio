@@ -1,7 +1,7 @@
+// src/components/Layout.tsx
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import ScrollToTop from "../ui/ScrollToTop";
-import { Container } from "./Container";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -9,12 +9,11 @@ type LayoutProps = {
 
 export const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="bg-white dark:bg-slate-950 text-primary dark:text-white transition-colors duration-500">
+  
+    <div className="min-h-screen bg-white dark:bg-slate-950 text-primary dark:text-white transition-colors duration-500">
       <Navbar />
-      <main className="pt-20 overflow-x-hidden"> 
-         <Container> 
-          {children}
-        </Container>
+      <main className="pt-20 overflow-x-hidden">
+        {children}
       </main>
       <Footer />
       <ScrollToTop />

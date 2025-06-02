@@ -73,11 +73,10 @@ export const AboutMe = () => {
                 Parliamone
               </a>
               <a
-                href="/assets/cv.pdf"
+                href="/cv"
                 className="inline-flex items-center gap-2 px-8 py-4 text-lg font-semibold rounded-full border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:border-blue-500 dark:hover:border-blue-400 transition-all duration-300 hover:shadow-lg cursor-pointer whitespace-nowrap"
-                download
               >
-                📄 Download CV
+                📄 Vedi il mio CV
               </a>
             </div>
           </motion.div>
