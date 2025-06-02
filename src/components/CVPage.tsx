@@ -1,4 +1,3 @@
-import React from 'react';
 import { Container } from '@/components/layout/Container'; 
 import { FaDownload, FaEnvelope, FaPhone, FaMapMarkerAlt, FaGlobe, FaLinkedinIn, FaGithubAlt, FaDribbble, FaBehance } from 'react-icons/fa'; 
 import { motion } from 'framer-motion'; 
@@ -108,7 +107,7 @@ export default function CVPage() {
               {/* Esperienza 1: EM Web Designer - Emmé Pubblicità */}
               <motion.div variants={itemVariants} className="mb-4">
                 <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-200">
-                  EM Web Designer - Emmé Pubblicità
+                  Front End Developer - Web Designer - Emmé Pubblicità
                 </h3>
                 <p className="text-md text-slate-600 dark:text-slate-400">
                   Lug 2024 - Feb 2025 | Gravina di Catania 
