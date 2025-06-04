@@ -9,7 +9,6 @@ import typescript from '@/assets/Icons/typescript.png';
 import tailwindcss from '@/assets/Icons/tailwindcss.svg';
 import figma from '@/assets/Icons/figma.svg';
 import less from '@/assets/Icons/less.svg';
-import expressJs from '@/assets/Icons/expressjs.svg';
 import angular from '@/assets/Icons/angularjs.svg';
 import nodeJs from '@/assets/Icons/node.png';
 import mongoDb from '@/assets/Icons/mongo.png';
@@ -51,7 +50,6 @@ export const allHardSkills: Skill[] = [
   { name: 'ViteJS', icon: vitejs, category: 'Frontend' },
 
   { name: 'NodeJS', icon: nodeJs, category: 'Backend & Database' },
-  { name: 'ExpressJS', icon: expressJs, status: 'In Crescita', category: 'Backend & Database' },
   { name: 'MongoDB', icon: mongoDb, category: 'Backend & Database' },
   { name: 'Firebase', icon: firebase, category: 'Backend & Database' },
   { name: 'Wordpress', icon: wordpress, category: 'Backend & Database' },
