@@ -3,17 +3,23 @@ import SectionIntro from '../components/layout/SectionIntro';
 
 const blogPosts = [
   {
-    title: "Perché la UX è fondamentale nel Front-End",
+    title: "React Hook Form e UseWatch",
     date: "Maggio 2025",
-    link: "https://www.linkedin.com/posts/stefaniad91_uxfrontend",
-    description: "Breve riflessione su come un buon design UX migliora l'esperienza dell'utente e la qualità del codice."
+    link: "https://www.linkedin.com/posts/stefaniad91_react19-reacthookform-usewatch-activity-7331259227702751234-hNwC?utm_source=share&utm_medium=member_desktop&rcm=ACoAAByFgVwBq347oO98Zi3Q_rjVY4lbAyapuYM",
+    description: "Utilizzo di React Hook Form e UseWatch per gestire il form di registrazione."
   },
   {
-    title: "Tailwind CSS: amore a prima vista",
-    date: "Aprile 2025",
-    link: "https://www.linkedin.com/posts/stefaniad91_tailwindcss",
-    description: "5 motivi per cui Tailwind ha migliorato il mio workflow di sviluppo."
+    title: "React 19 e il nuovo Compiler",
+    date: "Maggio 2025",
+    link: "https://www.linkedin.com/posts/stefaniad91_reactjs-react19-frontenddevelopment-activity-7328115677951668228-1yEs?utm_source=share&utm_medium=member_desktop&rcm=ACoAAByFgVwBq347oO98Zi3Q_rjVY4lbAyapuYM",
+    description: "Introduzione alla nuova versione di React, React 19, e il suo nuovo Compiler."
   },
+  {
+    title: "React 19 e ForwardRef",
+    date: "Maggio 2025",
+    link: "https://www.linkedin.com/posts/stefaniad91_react19-typescript-reactcompiler-activity-7328508796929048576-1p1I?utm_source=share&utm_medium=member_desktop&rcm=ACoAAByFgVwBq347oO98Zi3Q_rjVY4lbAyapuYM",
+    description: "Utilizzo di ForwardRef per gestire il form di registrazione."
+  }
 ];
 
 export const Blog = () => (
