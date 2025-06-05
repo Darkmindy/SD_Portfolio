@@ -6,7 +6,7 @@ import FloatingThemeToggle from "@/components/ui/FloatingThemeToggle";
 import cvPdf from '@/assets/StefaniaDeliso_CV_GraficaFrontEnd.pdf';
 
 // Import delle immagini
-import emmeLogo from '@/assets/icons/Emme_Pubblicita.jpeg';
+import emmeLogo from '@/assets/icons/emme_pubblicita.jpeg';
 import evolutionLogo from '@/assets/icons/evolution_tech.jpeg';
 import texxoLogo from '@/assets/icons/texxo_logo.jpeg';
 import iproLogo from '@/assets/icons/ipro_comunicazione.jpeg';
