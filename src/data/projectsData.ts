@@ -6,8 +6,9 @@ import TicTacToe from '@/assets/Projects/Tic-tac-toe.png';
 import FirstPortfolio from '@/assets/Projects/MyPortfolio.png';
 import MyBusinessCard from '@/assets/Projects/MyBusinessCard.png';
 import SoulFarm from '@/assets/Projects/SoulFarm.png';
+import GoodGen from '@/assets/Projects/FeelGood.png';
 
-export type ProjectCategory = 'web-development' | 'ui-ux-design' | 'branding' | 'mobile-design' | 'other';
+export type ProjectCategory = 'web-development' | 'ui-ux-design' | 'branding' | 'mobile-design' | 'games' | 'other';
 
 export interface Project {
     id: number;
@@ -77,8 +78,8 @@ export const projects: Project[] = [
         description: 'Il classico gioco Tic-tac-toe (Tris) arricchito con suoni ed emoji per un\'esperienza divertente.',
         longDescription: 'Questo progetto ricrea il classico gioco Tic-Tac-Toe, ma con un tocco moderno e interattivo. Ho implementato effetti sonori e l\'uso di emoji per rendere il gameplay più coinvolgente e visivamente accattivante.',
         imageUrl: TicTacToe,
-        technologies: ['React', 'CSS'],
-        category: 'web-development',
+        technologies: ['React', 'CSS', 'JavaScript'],
+        category: 'games',
         type: 'Development',
         liveUrl: 'https://board-game-sd.netlify.app',
         repoUrl: 'https://github.com/Darkmindy/Tic-tac-toe',
@@ -89,10 +90,34 @@ export const projects: Project[] = [
         description: 'Una semplice business card digitale creata con HTML e CSS.',
         longDescription: 'Questo è un progetto base per dimostrare le competenze fondamentali di HTML e CSS, creando un design pulito e responsivo per una business card digitale.',
         imageUrl: MyBusinessCard,
-        technologies: ['HTML', 'CSS'],
+        technologies: ['HTML', 'CSS', 'JavaScript'],
         category: 'web-development',
         type: 'Development',
         liveUrl: 'https://darkmindy.github.io/MyBusinessCard/',
         repoUrl: 'https://github.com/Darkmindy/MyBusinessCard',
     },
+    {
+        id: 7,
+        title: 'Feel Good Factory - Mood Booster',
+        description: 'Un semplice generatore di frasi motivazionali per aiutarti a mantenere la motivazione.',
+        longDescription: 'Questo progetto mi ha permesso di esplorare le basi di React e l\'implementazione di un generatore di frasi motivazionali per aiutarti a mantenere la motivazione.',
+        imageUrl: GoodGen,
+        technologies: ['React', 'Vite', 'CSS', 'TypeScript'],
+        category: 'web-development',
+        type: 'Development',
+        liveUrl: 'https://darkmindy.github.io/GoodWords-Generator/',
+        repoUrl: 'https://github.com/Darkmindy/GoodWords-Generator',
+    },
+    {
+        id: 8,
+        title: 'Egg Timer Master',
+        description: 'Un timer interattivo per cucinare le uova alla perfezione! 🍳',
+        longDescription: 'Questo progetto mi ha permesso di esplorare le basi di React e l\'implementazione di un timer interattivo per cucinare le uova alla perfezione.',
+        imageUrl: EggTimer,
+        technologies: ['HTML', 'CSS', 'React', 'TypeScript', 'Vite'],
+        category: 'web-development',        
+        type: 'Development',
+        liveUrl: 'https://darkmindy.github.io/MyPortfolio/',
+        repoUrl: 'https://github.com/Darkmindy/egg-timer-app',
+    }
 ];

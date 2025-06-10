@@ -2,12 +2,11 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Container } from "./layout/Container";
 import { ProjectModal } from "./projects/ProjectModal"; 
+
 // Importa i dati e i tipi dal nuovo file creato
 import { projects, Project, ProjectCategory } from "../data/projectsData"; 
 
-// Rimosse le importazioni non usate e commentato l'import di Button se non presente
-// import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa'; 
-// import { Button } from './ui/Button'; 
+
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState<ProjectCategory | 'all'>('all');
