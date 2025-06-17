@@ -1,40 +1,36 @@
+// src/components/CV.tsx
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { FaEnvelope, FaPhone, FaLocationPin, FaGlobe, FaDownload } from "react-icons/fa6";
-import { FaInstagram, FaDribbble, FaBehance, FaLinkedinIn, FaGithub, FaBriefcase, FaCode, FaGraduationCap, FaTools } from "react-icons/fa";
-import FloatingThemeToggle from "@/components/ui/FloatingThemeToggle";
-import cvPdf from '@/assets/StefaniaDeliso_CV_GraficaFrontEnd.pdf';
+import { Mail, Phone, MapPin, Globe, Download } from "lucide-react";
 
-// Import delle immagini
-import emmeLogo from '@/assets/icons/emme.svg';
-import evolutionLogo from '@/assets/icons/evolution.svg';
-import texxoLogo from '@/assets/icons/texxo.svg';
-import iproLogo from '@/assets/icons/ipro.svg';
-import profilePic from '@/assets/me.jpg';
+// Importa le icone da react-icons/fa6 (Font Awesome 6)
+import { 
+  FaInstagram, 
+  FaDribbble, 
+  FaBehance, 
+  FaLinkedinIn, 
+  FaGithub,
+  FaBriefcase, // Per Esperienza Lavorativa
+  FaCode,      // Per Competenze
+  FaGraduationCap, // Per Formazione
+ FaToolbox // Per Strumenti
+} from "react-icons/fa6";
 
 
-type Experience = {
-  title: string;
-  company: string;
-  period: string;
-  location: string;
-  description: string;
-  color: string;
-  initials: string; 
-  technologies?: string[];
-  icon: string; 
-};
+import ThemeToggle from "@/components/ui/FloatingThemeToggle";
 
-const experiences: Experience[] = [
+
+const experiences = [
   {
     title: "Web Designer",
     company: "Emmé Pubblicità",
     period: "Lug 2024 - Feb 2025",
     location: "Gravina di Catania",
     description: "Creavo siti web in WordPress usando l'editor Gutenberg, riproducendo design precisi fatti con Figma. Mi occupavo della grafica per i social media di cinque brand, usando Canva e Meta Business Suite.",
-    color: "purple",
-    initials: "EP",
-    icon: emmeLogo 
+    color: "purple", 
+    initials: "EP" ,
+    technologies: ["WordPress", "Gutenberg", "Figma", "Canva", "Meta Business Suite"]
   },
   {
     title: "Web Designer",
@@ -44,7 +40,7 @@ const experiences: Experience[] = [
     description: "Aggiornamento e modifica di siti web esistenti, miglioramento di temi, contenuti e ottimizzazione delle performance per velocità di caricamento.",
     color: "red",
     initials: "ET",
-    icon: evolutionLogo
+    technologies: ["WordPress", "Elementor", "Figma"]
   },
   {
     title: "Web Designer",
@@ -54,7 +50,7 @@ const experiences: Experience[] = [
     description: "Ho costruito e gestito 3 siti aziendali con WordPress. Coordinamento del progetto 'Sfera of Social' includendo sviluppo sito web e gestione social media.",
     color: "blue",
     initials: "TI",
-    icon: texxoLogo
+    technologies: ["WordPress", "Elementor", "Figma"]
   },
   {
     title: "Web Designer",
@@ -64,7 +60,7 @@ const experiences: Experience[] = [
     description: "Aggiornamento contenuti frontend/backend in Joomla e creazione di progetti di sensibilizzazione (brochure, social media design). Sviluppo della presenza grafica sui social media aziendali.",
     color: "orange",
     initials: "iPC",
-    icon: iproLogo
+    technologies: ["Joomla", "Figma"]
   }
 ];
 
@@ -113,6 +109,7 @@ const education = [
   },
   {
     title: "Foundations of User Experience (UX) Design",
+    institution: "Google (Coursera)",
     period: "Feb 2025",
     description: "Corso sulle basi della User Experience Design.",
     initials: "C",
@@ -124,9 +121,9 @@ const education = [
 const CV = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-slate-900 text-gray-900 dark:text-white flex relative">
-      {/* FloatingThemeToggle per il cambio di tema */}
+      {/* ThemeToggle posizionato in alto a destra */}
       <div className="absolute top-4 right-4 z-10">
-        <FloatingThemeToggle />
+        <ThemeToggle />
       </div>
 
       {/* Sidebar sinistra */}
@@ -134,7 +131,11 @@ const CV = () => {
         {/* Profile Section */}
         <div className="text-center mb-8">
           <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-4 ring-4 ring-purple-200 dark:ring-purple-800">
-            <img src={profilePic} alt="Stefania Deliso" className="w-full h-full object-cover" />
+            <img 
+              src="/lovable-uploads/9bb9bc8a-c736-41fc-b797-0ddc11d10aaf.png" 
+              alt="Stefania Deliso"
+              className="w-full h-full object-cover"
+            />
           </div>
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Stefania Deliso</h1>
           <p className="text-purple-600 dark:text-purple-400 text-sm font-medium mb-1">Front End Developer</p>
@@ -152,40 +153,40 @@ const CV = () => {
         {/* Contact Info */}
         <div className="space-y-4 mb-8">
           <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wide mb-4">Contatti</h3>
-
+          
           <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors">
             <div className="w-8 h-8 bg-purple-100 dark:bg-purple-900/50 rounded-lg flex items-center justify-center">
-              <FaEnvelope className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+              <Mail className="w-4 h-4 text-purple-600 dark:text-purple-400" />
             </div>
             <div>
               <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">Email</p>
               <p className="text-sm text-gray-900 dark:text-white font-medium">stefania.deliso1@gmail.com</p>
             </div>
           </div>
-
+          
           <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors">
             <div className="w-8 h-8 bg-purple-100 dark:bg-purple-900/50 rounded-lg flex items-center justify-center">
-              <FaGlobe className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+              <Globe className="w-4 h-4 text-purple-600 dark:text-purple-400" />
             </div>
             <div>
               <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">Website</p>
-              <p className="text-sm text-purple-600 dark:text-purple-400 font-medium break-all">https://stefania-dev-portfolio.netlify.app</p>
+              <p className="text-sm text-purple-600 dark:text-purple-400 font-medium break-all">sd-portfolio-lovable.vercel.app</p>
             </div>
           </div>
-
+          
           <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors">
             <div className="w-8 h-8 bg-purple-100 dark:bg-purple-900/50 rounded-lg flex items-center justify-center">
-              <FaPhone className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+              <Phone className="w-4 h-4 text-purple-600 dark:text-purple-400" />
             </div>
             <div>
               <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">Telefono</p>
               <p className="text-sm text-gray-900 dark:text-white font-medium">(+39) 324 7860 089</p>
             </div>
           </div>
-
+          
           <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors">
             <div className="w-8 h-8 bg-purple-100 dark:bg-purple-900/50 rounded-lg flex items-center justify-center">
-              <FaLocationPin className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+              <MapPin className="w-4 h-4 text-purple-600 dark:text-purple-400" />
             </div>
             <div>
               <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">Località</p>
@@ -197,8 +198,9 @@ const CV = () => {
         {/* Pulsante Scarica CV */}
         <div className="flex justify-center mt-auto mb-8">
           <Button asChild className="bg-gradient-to-r from-purple-600 to-pink-500 text-white hover:from-purple-700 hover:to-pink-600 transition-colors duration-300 shadow-lg">
-            <a href={cvPdf} download="StefaniaDeliso_CV_GraficaFrontEnd.pdf">
-              <FaDownload className="w-4 h-4 mr-2" />
+            {/* *** MODIFICA QUI: Percorso diretto al PDF nella cartella public *** */}
+            <a href="/StefaniaDeliso_CV_GraficaFrontEnd.pdf" download="StefaniaDeliso_CV_GraficaFrontEnd.pdf">
+              <Download className="w-4 h-4 mr-2" />
               Scarica CV
             </a>
           </Button>
@@ -228,8 +230,8 @@ const CV = () => {
               <FaLinkedinIn className="w-5 h-5 text-blue-500" /> {/* Icona FaLinkedinIn */}
               <span className="text-sm text-gray-900 dark:text-white">/stefaniad91</span>
             </a>
-            {/* GitHub (mantenuto da lucide-react perché più comune nel mondo dev) */}
-            <a href="https://github.com/Darkmindy" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors">
+             {/* GitHub (mantenuto da lucide-react perché più comune nel mondo dev) */}
+             <a href="https://github.com/Darkmindy" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors">
               <FaGithub className="w-5 h-5 text-gray-900 dark:text-white" /> {/* Icona FaGithub */}
               <span className="text-sm text-gray-900 dark:text-white">/Darkmindy</span>
             </a>
@@ -266,15 +268,14 @@ const CV = () => {
                 <FaBriefcase className="w-7 h-7 text-purple-600" /> Esperienza Lavorativa
               </h2>
             </div>
-
+            
             <div className="space-y-6">
               {experiences.map((exp, index) => (
                 <Card key={index} className={`bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 border-l-4 border-l-${exp.color}-500`}>
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
-                      {/* Qui usiamo un tag <img> per la tua immagine personalizzata */}
-                      <div className={`w-16 h-16 bg-${exp.color}-600 rounded-lg flex items-center justify-center flex-shrink-0 p-2`}> {/* Aggiunto padding per l'immagine */}
-                        <img src={exp.icon} alt={`${exp.company} logo`} className="w-full h-full object-contain" /> {/* object-contain per non tagliare l'immagine */}
+                      <div className={`w-16 h-16 bg-${exp.color}-600 rounded-lg flex items-center justify-center font-bold text-white text-lg flex-shrink-0`}>
+                        {exp.initials}
                       </div>
                       <div className="flex-1">
                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
@@ -317,7 +318,7 @@ const CV = () => {
                 <FaCode className="w-7 h-7 text-purple-600" /> Competenze
               </h2>
             </div>
-
+            
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {/* Design Skills */}
               <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700">
@@ -332,7 +333,7 @@ const CV = () => {
                   </div>
                 </CardContent>
               </Card>
-
+              
               {/* Frontend Development Skills */}
               <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700">
                 <CardContent className="p-6">
@@ -346,7 +347,7 @@ const CV = () => {
                   </div>
                 </CardContent>
               </Card>
-
+              
               {/* Styling & Frameworks Skills */}
               <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700">
                 <CardContent className="p-6">
@@ -365,7 +366,7 @@ const CV = () => {
               <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700">
                 <CardContent className="p-6">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                    <FaTools className="w-5 h-5 text-gray-600 dark:text-gray-400" /> Strumenti
+                    <FaToolbox className="w-5 h-5 text-gray-600 dark:text-gray-400" /> Strumenti
                   </h3>
                   <div className="space-y-2">
                     {skillCategoriesData.tools.items.map((skill, index) => (
@@ -387,12 +388,11 @@ const CV = () => {
                 <FaGraduationCap className="w-7 h-7 text-purple-600" /> Formazione
               </h2>
             </div>
-
+            
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {education.map((edu, index) => (
                 <Card key={index} className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700">
                   <CardContent className="p-6 text-center">
-                    {/* Qui potresti decidere se mettere un'icona o mantenere le iniziali */}
                     <div className={`w-16 h-16 bg-${edu.color}-500 rounded-lg flex items-center justify-center text-white font-bold text-lg mx-auto mb-4`}>
                       {edu.initials}
                     </div>
