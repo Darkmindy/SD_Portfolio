@@ -129,7 +129,7 @@ const Navbar = () => {
               <a href="https://www.linkedin.com/in/stefaniad91/" target="_blank" rel="noreferrer" onClick={closeMenu}>
                 <FaLinkedinIn size={32} className="hover:text-cyan-400 transition-colors" />
               </a>
-              <a href="mailto:your.email@example.com" target="_blank" rel="noreferrer" onClick={closeMenu}>
+              <a href="mailto:stefania.devgdi@gmail.com" target="_blank" rel="noreferrer" onClick={closeMenu}>
                 <FaEnvelope size={32} className="hover:text-cyan-400 transition-colors" />
               </a>
             </div>

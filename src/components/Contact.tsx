@@ -16,9 +16,9 @@ const Contact = () => {
         />
         {/* Il resto del contenuto rimane uguale */}
         <form
-          action="https://formspree.io/forms/mwplykao" // Assicurati che questo sia l'ID corretto per il tuo Formspree
+          action="https://formspree.io/f/mwplykao" 
           method="POST"
-          className="max-w-xl mx-auto space-y-6 mt-12" // Aggiungo un margine superiore per separare dal SectionIntro
+          className="max-w-xl mx-auto space-y-6 mt-12" 
         >
           <input
             type="text"
