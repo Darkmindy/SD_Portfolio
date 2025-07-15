@@ -1,6 +1,16 @@
+// src/components/ProjectModal.tsx
+
 import { Project } from '@/data/projectsData';
 import { motion } from "framer-motion";
 import { FaExternalLinkAlt, FaGithub, FaTimes } from 'react-icons/fa';
+
+// *** 1. Importa Swiper e i suoi stili QUI ***
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, A11y } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 interface Props {
   project: Project;
@@ -37,11 +47,38 @@ export function ProjectModal({ project, onClose }: Props) {
           {project.title}
         </h2>
 
-        <img
-          src={project.imageUrl}
-          alt={project.title}
-          className="w-full h-auto rounded-lg mb-6 shadow-md"
-        />
+        {/* *** 2. e 3. Logica per Carosello o Immagine singola *** */}
+        {project.images && project.images.length > 0 ? (
+          // Se esistono più immagini, mostra il carosello
+          <Swiper
+            modules={[Navigation, Pagination, A11y]}
+            spaceBetween={20}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            className="my-6 rounded-lg shadow-md"
+          >
+            {project.images.map((image, index) => (
+              <SwiperSlide key={index}>
+                <img
+                  src={image}
+                  alt={`Screenshot di ${project.title} ${index + 1}`}
+                  className="w-full h-auto rounded-lg"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        ) : (
+          // Se non ci sono immagini multiple, mostra l'immagine singola
+          // Controlla che 'imageUrl' esista per evitare errori
+          project.imageUrl && (
+            <img
+              src={project.imageUrl}
+              alt={project.title}
+              className="w-full h-auto rounded-lg mb-6 shadow-md"
+            />
+          )
+        )}
 
         <p className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed mb-4">
           {project.description}
