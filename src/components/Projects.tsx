@@ -1,151 +1,140 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Container } from "./layout/Container";
-import { ProjectModal } from "./projects/ProjectModal"; 
+// src/sections/Projects.tsx 
 
-// Importa i dati e i tipi dal nuovo file creato
-import { projects, Project, ProjectCategory } from "../data/projectsData"; 
+import { useState, useMemo } from 'react';
+import { Project, projectsData as allProjects, ProjectCategory, allTags as allTechnologies } from '@/data/projectsData'; // Importa tutti i progetti e tutte le tecnologie
+import { ProjectCard } from '@/components/projects/ProjectCard'; 
+import { ProjectModal } from '@/components/projects/ProjectModal'; 
+import { AnimatePresence } from 'framer-motion'; 
+
+import { Container } from '../components/layout/Container'; 
+import SectionIntro from '../components/layout/SectionIntro'; 
 
 
+const projectCategories: ProjectCategory[] = [
+  'Web Development', 'PWA', 'Games', 'UI/UX', 'Open Source'
+];
 
-export default function Projects() {
-  const [activeFilter, setActiveFilter] = useState<ProjectCategory | 'all'>('all');
+const ProjectsSection = () => {
+  const [selectedCategory, setSelectedCategory] = useState<ProjectCategory | 'Tutti'>('Tutti');
+  const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>([]);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const filters = [
-    { id: 'all', label: 'Tutti' },
-    { id: 'web-development', label: 'Web Dev' },
-    { id: 'ui-ux-design', label: 'UI/UX Design' },
-    { id: 'branding', label: 'Branding' },
-    { id: 'mobile-design', label: 'Mobile Design' },
-    { id: 'other', label: 'Altro' },
-  ];
+  const filteredProjects = useMemo(() => {
+    let filtered = allProjects;
 
-  const filteredProjects = activeFilter === 'all'
-    ? projects
-    : projects.filter(project => project.category === activeFilter);
+    // Filtro per categoria
+    if (selectedCategory !== 'Tutti') {
+      filtered = filtered.filter(project => project.category === selectedCategory);
+    }
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 12
-      }
-    },
-    exit: { opacity: 0, y: -50, scale: 0.9 }
+    // Filtro per tecnologie
+    if (selectedTechnologies.length > 0) {
+      filtered = filtered.filter(project =>
+        selectedTechnologies.every(tech => project.technologies.includes(tech))
+      );
+    }
+
+    // Ordina i featured in cima (i "featured" vanno per primi)
+    return filtered.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+  }, [selectedCategory, selectedTechnologies]);
+
+  const toggleTechnology = (tech: string) => {
+    setSelectedTechnologies(prev =>
+      prev.includes(tech)
+        ? prev.filter(t => t !== tech)
+        : [...prev, tech]
+    );
+  };
+
+  const clearFilters = () => {
+    setSelectedCategory('Tutti');
+    setSelectedTechnologies([]);
   };
 
   return (
-    <section id="projects" className="py-24 bg-white dark:bg-slate-950 text-slate-900 dark:text-white">
+    <section id="projects" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-950 text-slate-800 dark:text-white">
       <Container>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">I miei <span className="gradient-text">lavori</span></h2>
-          <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-            Una selezione dei progetti più significativi che rappresentano il mio percorso creativo e professionale.
-          </p>
-        </motion.div>
+        <SectionIntro
+          title={<>I miei <span className="gradient-text">Progetti</span></>}
+          description="Una selezione dei miei lavori più significativi, con un focus sui problemi risolti, le soluzioni sviluppate e i risultati ottenuti."
+        />
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-4 mb-16 px-4"
-        >
-          {filters.map((filter) => (
-            <motion.button
-              key={filter.id}
-              onClick={() => setActiveFilter(filter.id as ProjectCategory | 'all')}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className={`px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 shadow-md ${
-                activeFilter === filter.id
-                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-500/30'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700'
-              }`}
-            >
-              {filter.label}
-            </motion.button>
-          ))}
-        </motion.div>
-
-        <motion.div
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
-        >
-          <AnimatePresence>
-            {filteredProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                variants={cardVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                layout
-                onClick={() => setSelectedProject(project)}
-                className="group relative bg-white dark:bg-slate-800 rounded-3xl overflow-hidden shadow-xl border border-slate-200 dark:border-slate-700 hover:border-purple-500/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/20 cursor-pointer"
+        {/* --- Sistema di Filtri Avanzato --- */}
+        <div className="mb-12">
+          {/* Filtri per Categoria */}
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold mb-3">Filtra per Categoria:</h3>
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => setSelectedCategory('Tutti')}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${selectedCategory === 'Tutti' ? 'bg-blue-600 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600'}`}
               >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={project.imageUrl}
-                    alt={project.title}
-                    className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  <div className="absolute top-5 right-5">
-                    <span className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wide shadow-md ${
-                      project.type === 'Design'
-                        ? 'bg-purple-600/20 text-purple-300 border border-purple-600/30'
-                        : 'bg-cyan-600/20 text-cyan-300 border border-cyan-600/30'
-                    }`}>
-                      {project.type}
-                    </span>
-                  </div>
-                </div>
+                Tutti
+              </button>
+              {projectCategories.map(cat => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${selectedCategory === cat ? 'bg-blue-600 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600'}`}
+                >
+                  {cat} {/* Il nome è già formattato */}
+                </button>
+              ))}
+            </div>
+          </div>
 
-                <div className="p-7">
-                  <h3 className="text-2xl font-bold mb-3 group-hover:gradient-text transition-all duration-300 font-display">
-                    {project.title}
-                  </h3>
-                  <p className="text-slate-600 dark:text-slate-400 mb-5 text-base leading-relaxed">
-                    {project.description}
-                  </p>
+          {/* Filtri per Tecnologie */}
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold mb-3">Filtra per Tecnologie:</h3>
+            <div className="flex flex-wrap gap-2 max-h-40 overflow-y-auto pr-2"> {/* Aggiunto scroll per molte tech */}
+              {allTechnologies.map(tech => (
+                <button
+                  key={tech}
+                  onClick={() => toggleTechnology(tech)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${selectedTechnologies.includes(tech) ? 'bg-green-600 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600'}`}
+                >
+                  {tech}
+                </button>
+              ))}
+            </div>
+          </div>
 
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.slice(0, 4).map((tech, i) => (
-                      <span
-                        key={i}
-                        className="px-3 py-1 bg-slate-200/60 dark:bg-slate-700/60 text-xs font-medium rounded-md text-slate-700 dark:text-slate-300"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.technologies.length > 4 && (
-                      <span className="px-3 py-1 bg-slate-200/60 dark:bg-slate-700/60 text-xs font-medium rounded-md text-slate-700 dark:text-slate-300">
-                        +{project.technologies.length - 4}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+          {/* Contatore e Pulisci Filtri */}
+          <div className="flex justify-between items-center">
+            <span className="text-lg font-bold text-slate-800 dark:text-white">
+              Progetti trovati: {filteredProjects.length}
+            </span>
+            {(selectedCategory !== 'Tutti' || selectedTechnologies.length > 0) && (
+              <button
+                onClick={clearFilters}
+                className="px-4 py-2 rounded-full bg-red-500 text-white text-sm font-medium hover:bg-red-600 transition-colors"
+              >
+                Pulisci Filtri
+              </button>
+            )}
+          </div>
+        </div>
 
-        {selectedProject && <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />}
+        {/* --- Griglia delle Cards dei Progetti --- */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProjects.map(project => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              onViewDetails={setSelectedProject} // Quando clicchi, imposta il progetto per la modale
+            />
+          ))}
+        </div>
       </Container>
+
+      {/* --- Modale Dettaglio Progetto --- */}
+      <AnimatePresence>
+        {selectedProject && (
+          <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+        )}
+      </AnimatePresence>
     </section>
   );
-}
+};
+
+export default ProjectsSection;
